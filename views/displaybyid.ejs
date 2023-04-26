@@ -1,0 +1,121 @@
+<style>
+    .maincontainer{
+       height: 100vh; 
+       width: 100vw; 
+       background: #7d3939;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+
+    }
+
+    .box{
+        width: 780px;
+        height: auto;
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+
+    }
+
+    .headingdiv{
+     padding: 5px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+    .centerstyle{
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<html>
+    <head>
+      <title>EDIT BOOK</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src=" https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/javascripts/project.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    </head>
+<div class="maincontainer">
+    <div class="box">
+        <div class="headingdiv">
+          <div>
+            <img src="/images/logo.png" width="50" height="50"/>
+            <span style="font-size: 20px; font-weight: bold; font-family: poppins; letter-spacing: 1;padding-left: 10px;">Edit Book </span>
+          </div>
+            <div>
+              <a href="/books/fetch_all_books" style="text-decoration: none
+              ;"><img src="/images/list.png" width="50" height="50"/></a>
+              </div>
+        
+        </div>
+        <form action="/books/edit_book_details" method="post"
+         class="row g-3"  >
+         <input type="hidden" value="<%=data.bookid %>" name="bookid">
+            <div class="col-md-6">
+                <label for="subjectid" class="form-label"><b>Subject </b></label>
+                <select id='subject' name="subjectid"
+                 class="form-select" aria-label="Default select example">
+                  <option value="<%=data.subjectid%>" ><%=data.subjectname%></option>
+                </select>
+              </div>
+            <div class="col-md-6">
+                <label for="subjectid" class="form-label"><b>Title </b></label>
+                <select id='title' name="titleid" class="form-select" aria-label="Default select example">
+                  <option value="<%=data.titleid%>" ><%=data.title%></option>
+                </select>
+              </div>
+            <div class="col-md-6">
+                <label for="author" class="form-label"><b>Author</b> </label>
+                <input type="text"
+                value="<%=data.author%>" name="author" class="form-control" id="author">
+              </div>
+            <div class="col-md-6">
+                <label for="publisher" class="form-label"><b>Publisher</b></label>
+                <input type="text"
+                value="<%=data.publisher%>" name="publisher"   class="form-control" id="publisher">
+              </div>
+            <div class="col-md-6">
+                <label for="price" class="form-label"><b>Price</b> </label>
+                <input type="text" value="<%=data.price%>" name="price" class="form-control" id="price">
+              </div>
+            <div class="col-md-6">
+                <label for="offer" class="form-label"><b>Offer</b></label>
+                <input type="text" value="<%=data.offer%>" name="offer" class="form-control" id="offer">
+              </div>
+              <div class="col-md-12" style="display: flex; flex-direction: column;">
+                <div><b>Status</b></div>
+                <div style="display: flex;flex-direction: row; justify-content: space-evenly; ">
+              <div class="form-check">
+                <input class="form-check-input" <%= data.status=="Available"?"checked":"" %> type="radio"  name="status" value="Available" id="status">
+                <label class="form-check-label" for="status">
+                  <b>Available</b>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio"  <%= data.status=="Not Available"?"checked":"" %> name="status" value="Not Available" id="status">
+                <label class="form-check-label" for="status">
+                  <b>Not Available</b>
+                </label>
+              </div>
+            </div>
+              </div>
+             
+<div class="col-md-6 centerstyle">
+    <button style="width: 70%;" type="submit" value="Edit" name="btn" class="btn btn-primary">Edit</button>  
+</div>
+<div class="col-md-6 centerstyle">
+    <button style="width: 70%;" type="submit" value="Delete" name="btn" class="btn btn-primary">Delete</button>
+</div>
+</form>
+</div>
+</div>
+</html>
